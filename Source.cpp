@@ -7,9 +7,19 @@ void task(DLIST& list)
 	int min_cost = p->info.GetCost();
 	while (p && p->info.GetCost() == min_cost)
 	{
+		if (p == list.get_begin())
+		{
+			std::cout << p->info.GetShopName() << ": " << p->info.GetName() << " ";
+		}
+		else if (p->prev->info.GetShopName() == p->info.GetShopName())
+		{
+			std::cout << p->info.GetName() << " ";
+		}
+		else if (p->prev->info.GetShopName() != p->info.GetShopName())
+		{
+			std::cout << std::endl << p->info.GetShopName() << ": " << p->info.GetName() << " ";
+		}
 		
-		
-
 		p = p->next;
 	}
 }
@@ -35,7 +45,7 @@ int main()
 		bool label = true;
 		while (label)
 		{
-			std::cout << "Желаете начать заново или выйти? 1 - заново, 2 - выйти ";
+			std::cout << std::endl << "Желаете начать заново или выйти? 1 - заново, 2 - выйти ";
 			std::cin >> choice;
 			switch (choice)
 			{
